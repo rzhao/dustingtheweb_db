@@ -1,13 +1,21 @@
 #home_page
   %h1
     Flip A Bit DB
+  %p
+    To post a new instance of a vulnerability, make a POST request to "https://dustingtheweb.herokuapp.com/messages" with a JSON in the format of: 
+  %p  
+    { message: { url: "www.google.com", vulnerability_id: 1, text: "optional text", crawler: false } }
   
-  %a{:href => "#", :id => "sample"}
-    Create Sample Message
+  #example
+    %p
+      Click below to create a sample message 
+      %b
+        %i
+          (this is for db testing only!)
+    %a{:href => "#", :id => "sample"}
+      Create Sample Message
   
   :javascript
     $("#sample").click(function() {
-      $.post("/messages", {message: {url: "www.google.com", vulnerability_id: 1, text: "some text", crawler: true}}, function(data) {
-      
-      });
+      $.post("/messages", { message: { url: "www.google.com", vulnerability_id: 1, text: "THIS IS AN EXAMPLE MESSAGE", crawler: true } });
     });

@@ -4,12 +4,15 @@
   #new_vul_link
     = link_to "New Vulnerability", new_vulnerability_path
   %ul#vuls
+    .count
+      %b
+        Count
     - @vulnerabilities.each do |vulnerability|
       %li.vul
         = vulnerability.messages.count
         &nbsp;&nbsp;
         %a{ :href => vulnerability_path(vulnerability) }
-          = vulnerability.name
+          = vulnerability.name + " (id: #{vulnerability.id})"
         .vul_links
           = link_to 'Edit', edit_vulnerability_path(vulnerability)
           |
