@@ -1,0 +1,12 @@
+%table
+  %tr
+    %th Url
+    %th Vulernability
+    %th Text
+    %th
+  - @messages.each do |message|
+    %tr
+      %td.long= message.url
+      %td.short= message.vulnerability_id
+      %td.long= message.text
+      %td.short= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete

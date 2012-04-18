@@ -1,0 +1,13 @@
+#home_page
+  %h1
+    Flip A Bit DB
+  
+  %a{:href => "#", :id => "sample"}
+    Create Sample Message
+  
+  :javascript
+    $("#sample").click(function() {
+      $.post("/messages", {message: {url: "www.google.com", vulnerability_id: 1, text: "some text", crawler: true}}, function(data) {
+      
+      });
+    });

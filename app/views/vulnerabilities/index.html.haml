@@ -1,0 +1,16 @@
+#vul_page
+  %h1
+    Vulnerability Statistics
+  #new_vul_link
+    = link_to "New Vulnerability", new_vulnerability_path
+  %ul#vuls
+    - @vulnerabilities.each do |vulnerability|
+      %li.vul
+        = vulnerability.messages.count
+        &nbsp;&nbsp;
+        %a{ :href => vulnerability_path(vulnerability) }
+          = vulnerability.name
+        .vul_links
+          = link_to 'Edit', edit_vulnerability_path(vulnerability)
+          |
+          = link_to 'Destroy', vulnerability, confirm: 'Are you sure?', method: :delete

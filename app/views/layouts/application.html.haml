@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title CrawlerDb
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    #page
+      #header_links
+        = link_to "Home", root_path
+        |
+        = link_to "Vulnerabilities", vulnerabilities_path
+        |
+        = link_to "Raw Data", messages_path
+      #page_body
+        = yield
