@@ -9,6 +9,9 @@ class MessagesController < ApplicationController
   end
   
   def create
+    puts "*"*80
+    puts params.inspect
+    puts "*"*80
     vid = params[:message][:vulnerability_id]
     if vid.to_i == 0
       vid = Vulnerability.find_by_name(vid).id rescue nil
