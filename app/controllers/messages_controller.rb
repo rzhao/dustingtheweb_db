@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if vid.nil?
-        format.json { render json: { "Error: Improper vulnerability_id" }, status: :unprocessable_entity }
+        format.json { render json: "Error: Improper vulnerability_id", status: :unprocessable_entity }
       elsif @message.save
         format.json { render json: @message, status: :created, location: @message }
       else
