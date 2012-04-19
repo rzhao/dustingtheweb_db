@@ -7,7 +7,9 @@
     { message: { url: "www.google.com", vulnerability_id: 1, text: "optional text", crawler: false } }
     
   %p
-    You can also get a dump of all of the raw data so far by making a GET request to "https://dustingtheweb.herokuapp.com/dump"
+    The vulnerability_id can be either the id or the specific name ( both can be found
+    = link_to "here", vulnerabilities_path
+    ) You can also get a dump of all of the raw data so far by making a GET request to "https://dustingtheweb.herokuapp.com/dump"
   
   #example
     %p

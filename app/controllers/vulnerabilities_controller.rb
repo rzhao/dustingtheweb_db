@@ -30,7 +30,7 @@ class VulnerabilitiesController < ApplicationController
     @vulnerability = Vulnerability.find(params[:id])
 
     if @vulnerability.update_attributes(params[:vulnerability])
-      redirect_to @vulnerability, notice: 'Vulnerability was successfully updated.'
+      redirect_to vulnerabilities_path, notice: 'Vulnerability was successfully updated.'
     else
       render action: "edit"
     end
