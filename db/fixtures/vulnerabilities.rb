@@ -1,31 +1,51 @@
 Vulnerability.seed do |v|
-  v.name = "document_domain"
+  v.name = "document.domain"
 end
 
 Vulnerability.seed do |v|
-  v.name = "https_cookies"
+  v.name = "Cookies"
 end
 
 Vulnerability.seed do |v|
-  v.name = "user_principle"
+  v.name = "Alert"
 end
 
 Vulnerability.seed do |v|
-  v.name = "xmlhttprequests"
+  v.name = "XMLHttpRequest"
 end
 
 Vulnerability.seed do |v|
-  v.name = "geolocation"
+  v.name = "Geolocation"
 end
 
 Vulnerability.seed do |v|
-  v.name = "history"
+  v.name = "History"
 end
 
 Vulnerability.seed do |v|
-  v.name = "clipboard"
+  v.name = "Clipboard"
 end
 
 Vulnerability.seed do |v|
-  v.name = "iframe_overlap"
+  v.name = "MouseEvent"
+end
+
+Vulnerability.seed do |v|
+  v.name = "onbeforeunload"
+end
+
+Vulnerability.seed do |v|
+  v.name = "window.focus"
+end
+
+Vulnerability.seed do |v|
+  v.name = "window.blur"
+end
+
+Vulnerability.seed do |v|
+  v.name = "PostMessageSent"
+end
+
+Vulnerability.seed do |v|
+  v.name = "PostMessageReceived"
 end

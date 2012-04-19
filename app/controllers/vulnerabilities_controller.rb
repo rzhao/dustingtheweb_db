@@ -35,6 +35,11 @@ class VulnerabilitiesController < ApplicationController
       render action: "edit"
     end
   end
+  
+  def clear
+    Message.destroy_all(:vulnerability_id => params[:id])
+    redirect_to vulnerabilities_path
+  end
 
   def destroy
     @vulnerability = Vulnerability.find(params[:id])

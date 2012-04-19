@@ -16,4 +16,6 @@
         .vul_links
           = link_to 'Edit', edit_vulnerability_path(vulnerability)
           |
+          = link_to 'Clear', clear_path(:id => vulnerability.id), confirm: 'Are you sure you want to clear all data for this vulnerability?'
+          |
           = link_to 'Destroy', vulnerability, confirm: 'Are you sure?', method: :delete
