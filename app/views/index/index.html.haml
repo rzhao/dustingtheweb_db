@@ -18,14 +18,14 @@
   
   #example
     %p
-      Click below to create a sample message 
+      Click below to create a sample document.domain message 
       %b
         %i
-          (this is for db testing only!)
+          (this is for db testing)
     %a{:href => "#", :id => "sample"}
       Create Sample Message
   
   :javascript
     $("#sample").click(function() {
-      $.post("/messages", { message: { url: "www.google.com", vulnerability_id: "history", text: "THIS IS AN EXAMPLE MESSAGE", crawler: true } });
+      $.post("/messages", { message: { url: "www.google.com", vulnerability_id: "document.domain", text: "THIS IS AN EXAMPLE MESSAGE", crawler: true } });
     });
