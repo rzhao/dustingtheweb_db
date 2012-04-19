@@ -3,7 +3,7 @@ CrawlerDb::Application.routes.draw do
 
   resources :messages, :only => [:index, :create, :destroy]
   
-  match 'dump' => 'index#dump'
+  match 'dump' => 'messages#dump'
 
   root :to => 'index#index'
 end
