@@ -20,12 +20,14 @@ class MessagesController < ApplicationController
     
     url_hash = Digest::SHA1.hexdigest params[:message][:url]
     uri = URI.parse params[:message][:url]
+    
+    scheme = uri.scheme.nil? ? "" : uri.scheme + "://"
+    url = params[:message][:url] = scheme + (uri.host || "") + (uri.path || "")
 
-    @message = Message.find_by_url_hash_and_vulnerability_id_and_text(url_hash, params[:message][:vulnerability_id], params[:message][:text])
+    @message = Message.find_by_url_and_vulnerability_id_and_text(url, params[:message][:vulnerability_id], params[:message][:text])
     if @message.nil?
       params[:message][:count] = 1
-      scheme = uri.scheme.nil? ? "" : uri.scheme + "://"
-      params[:message][:url] = scheme + (uri.host || "") + (uri.path || "")
+      params[:message][:url] = url
       params[:message][:url_hash] = url_hash
       @message = Message.new(params[:message]) 
     else
