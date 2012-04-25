@@ -5,7 +5,11 @@ class VulnerabilitiesController < ApplicationController
 
   def show
     @vulnerability = Vulnerability.find(params[:id])
-    @messages = @vulnerability.messages
+    @page = params[:page].to_i > 0 ? params[:page].to_i : 1
+    @pages = (@vulnerability.messages.count / 1000.0).ceil
+    @pages = 1 if @pages == 0
+    @page = 1 if @page > @pages
+    @messages = @vulnerability.messages.limit(1000).offset((@page - 1) * 1000)
   end
 
   def new

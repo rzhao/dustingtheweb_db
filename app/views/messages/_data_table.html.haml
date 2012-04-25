@@ -9,4 +9,4 @@
       %td.long= message.url.length > 50 ? message.url[0..46] + "..." : message.url
       %td.short= message.vulnerability_id
       %td.long= message.text.length > 50 ? message.text[0..46] + "..." : message.text
-      %td.short= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete
+      %td.short= link_to 'Delete', message, confirm: 'Are you sure?', method: :delete
