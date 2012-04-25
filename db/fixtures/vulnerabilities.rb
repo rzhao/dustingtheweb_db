@@ -55,5 +55,5 @@ Vulnerability.seed do |v|
 end
 
 Vulnerability.seed do |v|
-  v.name = "PageVisit"
+  v.name = "Visit"
 end

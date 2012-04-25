@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20120313230611) do
     t.integer  "vulnerability_id"
     t.string   "text"
     t.boolean  "crawler"
+    t.string   "url_hash"
     t.integer  "count",            :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"

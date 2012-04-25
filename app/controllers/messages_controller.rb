@@ -1,3 +1,6 @@
+require 'uri'
+require 'digest/sha1'
+
 class MessagesController < ApplicationController
   def index
     @messages = Message.all
@@ -13,11 +16,17 @@ class MessagesController < ApplicationController
     if vid.to_i == 0
       vid = Vulnerability.find_by_name(vid).id rescue nil
     end
-
     params[:message][:vulnerability_id] = vid unless vid.nil?
-    @message = Message.find_by_url_and_vulnerability_id_and_text(params[:message][:url], params[:message][:vulnerability_id], params[:message][:text])
+    
+    url_hash = Digest::SHA1.hexdigest params[:message][:url]
+    uri = URI.parse params[:message][:url]
+    
+    @message = Message.find_by_url_hash_and_vulnerability_id_and_text(url_hash, params[:message][:vulnerability_id], params[:message][:text])
     if @message.nil?
       params[:message][:count] = 1
+      scheme = uri.scheme.nil? ? "" : uri.scheme + "://"
+      params[:message][:url] = scheme + (uri.host || "") + (uri.path || "")
+      params[:message][:url_hash] = url_hash
       @message = Message.new(params[:message]) 
     else
       @message.count = @message.count + 1
