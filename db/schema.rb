@@ -14,10 +14,11 @@
 ActiveRecord::Schema.define(:version => 20120313230611) do
 
   create_table "messages", :force => true do |t|
-    t.string   "url",              :null => false
+    t.string   "url",                             :null => false
     t.integer  "vulnerability_id"
     t.string   "text"
     t.boolean  "crawler"
+    t.integer  "count",            :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end

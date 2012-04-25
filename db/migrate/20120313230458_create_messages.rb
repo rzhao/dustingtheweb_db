@@ -5,6 +5,7 @@ class CreateMessages < ActiveRecord::Migration
       t.integer :vulnerability_id
       t.string :text
       t.boolean :crawler
+      t.integer :count, :default => 1
 
       t.timestamps
     end

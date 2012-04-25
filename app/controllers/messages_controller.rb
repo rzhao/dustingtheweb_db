@@ -16,7 +16,11 @@ class MessagesController < ApplicationController
 
     params[:message][:vulnerability_id] = vid unless vid.nil?
     @message = Message.find_by_url_and_vulnerability_id_and_text(params[:message][:url], params[:message][:vulnerability_id], params[:message][:text])
-    @message = Message.new(params[:message]) if @message.nil?
+    if @message.nil?
+      @message = Message.new(params[:message]) 
+    else
+      @message.count = @message.count + 1
+    end
 
     respond_to do |format|
       if vid.nil?

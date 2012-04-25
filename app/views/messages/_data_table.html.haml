@@ -1,12 +1,14 @@
 %table
   %tr
+    %th Count
     %th Url
     %th Vulernability
     %th Text
     %th
   - @messages.each do |message|
     %tr
-      %td.long= message.url.length > 50 ? message.url[0..46] + "..." : message.url
+      %td.short= message.count
+      %td.long= message.url.length > 40 ? message.url[0..36] + "..." : message.url
       %td.short= message.vulnerability_id
-      %td.long= message.text.length > 50 ? message.text[0..46] + "..." : message.text
+      %td.long= message.text.length > 40 ? message.text[0..36] + "..." : message.text
       %td.short= link_to 'Delete', message, confirm: 'Are you sure?', method: :delete

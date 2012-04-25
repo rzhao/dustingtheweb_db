@@ -49,3 +49,11 @@ end
 Vulnerability.seed do |v|
   v.name = "PostMessageReceived"
 end
+
+Vulnerability.seed do |v|
+  v.name = "ClickJacking"
+end
+
+Vulnerability.seed do |v|
+  v.name = "PageVisit"
+end
