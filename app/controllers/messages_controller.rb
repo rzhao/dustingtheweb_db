@@ -20,7 +20,8 @@ class MessagesController < ApplicationController
     
     url_hash = Digest::SHA1.hexdigest params[:message][:url]
     uri = URI.parse params[:message][:url]
-    
+    puts Message.reflections
+    puts "*"*80
     @message = Message.find_by_url_hash_and_vulnerability_id_and_text(url_hash, params[:message][:vulnerability_id], params[:message][:text])
     if @message.nil?
       params[:message][:count] = 1
