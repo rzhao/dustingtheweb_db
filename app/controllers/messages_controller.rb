@@ -3,7 +3,11 @@ require 'digest/sha1'
 
 class MessagesController < ApplicationController
   def index
-    @messages = Message.all
+    @page = params[:page].to_i > 0 ? params[:page].to_i : 1
+    @pages = (Message.count / 500.0).ceil
+    @pages = 1 if @pages == 0
+    @page = 1 if @page > @pages
+    @messages = Message.limit(500).offset((@page - 1) * 500)
 
     respond_to do |format|
       format.html # index.html.erb

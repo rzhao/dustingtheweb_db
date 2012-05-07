@@ -3,19 +3,21 @@
     Vulnerability Statistics
   #new_vul_link
     = link_to "New Vulnerability", new_vulnerability_path
-  %ul#vuls
-    .count
-      %b
-        Count
-    - @vulnerabilities.each do |vulnerability|
-      %li.vul
-        = vulnerability.messages.count
-        &nbsp;&nbsp;
-        %a{ :href => vulnerability_path(vulnerability) }
-          = vulnerability.name + " (id: #{vulnerability.id})"
-        .vul_links
-          = link_to 'Edit', edit_vulnerability_path(vulnerability)
-          |
-          = link_to 'Clear', clear_path(:id => vulnerability.id), confirm: 'Are you sure you want to clear all data for this vulnerability?'
-          |
-          = link_to 'Delete', vulnerability, confirm: 'Are you sure you want to delete this vulnerability and all its data?', method: :delete
+  %table
+    %tr
+      %th Uniq Pgs
+      %th Uniq Dmns
+      %th Name
+      %th 
+      %th
+      %th
+    - @vulnerabilities.each do |vul|
+      %tr
+        %td.short= vul.messages.count
+        %td.short= vul.messages.collect { |m| URI.parse(m.url).host }.uniq.count
+        %td.long
+          %a{ :href => vulnerability_path(vul) }
+            = vul.name + " (id: #{vul.id})"
+        %td.short= link_to 'Edit', edit_vulnerability_path(vul)
+        %td.short= link_to 'Clear', clear_path(:id => vul.id), confirm: 'Are you sure you want to clear all data for this vulnerability?'
+        %td.short= link_to 'Delete', vul, confirm: 'Are you sure you want to delete this vulnerability and all its data?', method: :delete

@@ -10,9 +10,9 @@
         <
     -else
       .plink
-        = link_to "<<", vulnerability_path(:id => @vulnerability.id, :page => 1)
+        = link_to "<<", messages_path(:page => 1)
       .plink
-        = link_to "<", vulnerability_path(:id => @vulnerability.id, :page => @page - 1)
+        = link_to "<", messages_path(:page => @page - 1)
     = "page #{@page} of #{@pages}"
     - if @page == @pages
       .plink
@@ -21,8 +21,8 @@
         >>
     - else
       .plink
-        = link_to ">", vulnerability_path(:id => @vulnerability.id, :page => @page + 1)
+        = link_to ">", messages_path(:page => @page + 1)
       .plink
-        = link_to ">>", vulnerability_path(:id => @vulnerability.id, :page => @pages)
+        = link_to ">>", messages_path(:page => @pages)
   
   = render 'messages/data_table'
