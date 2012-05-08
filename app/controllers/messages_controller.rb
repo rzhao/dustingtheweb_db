@@ -50,8 +50,11 @@ class MessagesController < ApplicationController
   end
   
   def dump
+    pages = (Message.count / 500.0).ceil
+    pages = 1 if pages == 0
+    done = params[:page] == pages
     respond_to do |format|
-      format.json { render json: Message.all.to_json }
+      format.json { render json: { "done" => done, "messages" => Message.limit(500).offset((params[:page] - 1) * 500) }.to_json }
     end
   end
 
