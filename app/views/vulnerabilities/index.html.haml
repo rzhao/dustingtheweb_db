@@ -14,7 +14,7 @@
     - @vulnerabilities.each do |vul|
       %tr
         %td.short= vul.messages.reject { |m| m.crawler }.collect { |m| m.hash }.uniq.count
-        %td.short= vul.messages.collect { |m| URI.parse(m.url).host }.uniq.count
+        %td.short= vul.messages.reject { |m| m.crawler }.collect { |m| URI.parse(m.url).host }.uniq.count
         %td.long
           %a{ :href => vulnerability_path(vul) }
             = vul.name + " (id: #{vul.id})"
