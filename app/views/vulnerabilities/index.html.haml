@@ -25,7 +25,10 @@
     %h2
       Other Stats
     = "Unique secure pages that set a non-secure cookie: #{@cookies1.collect { |m| m.hash }.uniq.count}"
+    %br
     = "Unique secure domains that set a non-secure cookie: #{@cookies1.collect { |m| URI.parse(m.url).host }.uniq.count}"
+    %br
     = "Unique non-secure pages that set a secure cookie: #{@cookies2.collect { |m| m.hash }.uniq.count}"
+    %br
     = "Unique non-secure domains that set a secure cookie: #{@cookies2.collect { |m| URI.parse(m.url).host }.uniq.count}"
     
