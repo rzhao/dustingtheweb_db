@@ -31,4 +31,12 @@
     = "Unique non-secure pages that set a secure cookie: #{@cookies2.collect { |m| m.hash }.uniq.count}"
     %br
     = "Unique non-secure domains that set a secure cookie: #{@cookies2.collect { |m| URI.parse(m.url).host }.uniq.count}"
-    
+    %br
+    %br
+    = "Unique pages that send synchronous XHRs: #{@xml1.collect { |m| m.hash }.uniq.count}"
+    %br
+    = "Unique domains that send synchronous XHRs: #{@xml1.collect { |m| URI.parse(m.url).host }.uniq.count}"
+    %br
+    = "Unique pages that setRequestHeader: #{@xml2.collect { |m| m.hash }.uniq.count}"
+    %br
+    = "Unique domains that setRequestHeader: #{@xml2.collect { |m| URI.parse(m.url).host }.uniq.count}"

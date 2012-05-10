@@ -5,6 +5,8 @@ class VulnerabilitiesController < ApplicationController
     # HARD-CODED STATS:
     @cookies1 = Message.find_all_by_vulnerability_id(31).select { |m| !m.crawler && m.text == "Secure website set a non-secure cookie!" }
     @cookies2 = Message.find_all_by_vulnerability_id(31).select { |m| !m.crawler && m.text == "Non-secure website set a secure cookie!" }
+    @xml1 = Message.find_all_by_vulnerability_id(7).select { |m| !m.crawler && m.text == "Website called a SYNCHRONOUS request" }
+    @xml2 = Message.find_all_by_vulnerability_id(7).select { |m| !m.crawler && m.text == "Website called setRequestHeader()" }
   end
 
   def show
