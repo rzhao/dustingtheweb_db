@@ -21,3 +21,11 @@
         %td.short= link_to 'Edit', edit_vulnerability_path(vul)
         %td.short= link_to 'Clear', clear_path(:id => vul.id), confirm: 'Are you sure you want to clear all data for this vulnerability?'
         %td.short= link_to 'Delete', vul, confirm: 'Are you sure you want to delete this vulnerability and all its data?', method: :delete
+  #other_stats
+    %h2
+      Other Stats
+    = "Unique secure pages that set a non-secure cookie: #{@cookies1.collect { |m| m.hash }.uniq.count}"
+    = "Unique secure domains that set a non-secure cookie: #{@cookies1.collect { |m| URI.parse(m.url).host }.uniq.count}"
+    = "Unique non-secure pages that set a secure cookie: #{@cookies2.collect { |m| m.hash }.uniq.count}"
+    = "Unique non-secure domains that set a secure cookie: #{@cookies2.collect { |m| URI.parse(m.url).host }.uniq.count}"
+    
