@@ -1,6 +1,10 @@
 class VulnerabilitiesController < ApplicationController
   def index
     @vulnerabilities = Vulnerability.all
+    
+    # HARD-CODED STATS:
+    @cookies1 = Message.find_all_by_vulnerability_id(31).select { |m| !m.crawler && m.text == "Secure website set a non-secure cookie!" }
+    @cookies2 = Message.find_all_by_vulnerability_id(31).select { |m| !m.crawler && m.text == "Non-secure website set a secure cookie!" }
   end
 
   def show
